@@ -760,7 +760,7 @@ D.IDE = function IDE(opts = {}) {
         if (ide.w3500 && !ide.w3500.closed) {
           ide.w3500.focus(); init();
         } else {
-          ide.w3500 = window.open('empty.html', '3500 I-beam', 'width=800,height=500');
+          ide.w3500 = window.open('empty.html', '3500 I-beam');
           ide.w3500.onload = init;
         }
       }
