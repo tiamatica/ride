@@ -734,6 +734,12 @@
     return !1;
   };
   global.go = go;
+  const purgePresets = () => {
+    D.prf.presetsCreated([]);
+    D.conns.filter((x) => x.preset).forEach((x) => {
+      x.preset = false;
+    });
+  };
   const setUpMenu = () => {
     D.InitHelp();
     const m = 'Dyalog'
@@ -751,6 +757,8 @@
     + '\n  Copy=CP'
     + '\n  Paste=PT'
     + '\n  Select All=SA'
+    + '\n&Connections'
+    + '\n  &PurgePresets=PPR'
     + '\n&Help'
     + '\n  Getting &Started         =https://dyalog.com/introduction.htm'
     + '\n  -'
@@ -765,6 +773,9 @@
     + '\n  Read &Me                 =RME'
     + '\n  &Third Party Licences    =TPL';
     D.installMenu(D.parseMenuDSL(m));
+    D.commands.PPR = () => {
+      purgePresets();
+    };
   };
   D.cn = () => { // set up Connect page
     q = J.cn;
